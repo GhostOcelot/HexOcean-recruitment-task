@@ -20,13 +20,14 @@
 	height: 100vh;
 	background-color: cadetblue;
 	background-image: url('./assets/background.jpg');
-	padding: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .order_window {
+	width: 500px;
+	max-width: 90%;
 	background: var(--primarycolorlight);
 	color: var(--primarycolor);
 	border: 3px solid var(--primarycolor);
@@ -36,7 +37,7 @@
 
 .order_window input,
 .order_window select {
-	width: 300px;
+	width: 100%;
 	padding: 10px;
 	margin: 7px 0 20px 0;
 	border: 3px solid var(--primarycolor);
