@@ -1,4 +1,13 @@
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
 const CreateOrder = () => {
+	const [orderType, setOrderType] = useState('pizza');
+
+	const changeOrderType = e => {
+		setOrderType(e.target.value);
+	};
+
 	return (
 		<>
 			<form>
@@ -9,11 +18,15 @@ const CreateOrder = () => {
 				<input type="text" name="preparation_time" />
 
 				<label htmlFor="dish_type">dish type:</label>
-				<select name="dish_type">
+				<select onChange={e => changeOrderType(e)} name="dish_type">
 					<option value="pizza">pizza</option>
 					<option value="soup">soup</option>
 					<option value="sandwich">sandwich</option>
 				</select>
+
+				<Link to={`/order_${orderType}`}>
+					<button>Continue</button>
+				</Link>
 			</form>
 		</>
 	);

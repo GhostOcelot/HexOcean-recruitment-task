@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { useState } from 'react';
 
 const OrderSoup = () => {
@@ -19,6 +21,10 @@ const OrderSoup = () => {
 				value={spiciness}
 			/>
 			<span>{spiciness}</span>
+
+			<Link to="/order_ready">
+				<button>Continue</button>
+			</Link>
 		</div>
 	);
 };

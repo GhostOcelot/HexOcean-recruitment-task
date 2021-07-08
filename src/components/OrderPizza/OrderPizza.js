@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const OrderPizza = () => {
 	return (
 		<div>
@@ -6,6 +8,10 @@ const OrderPizza = () => {
 
 			<label htmlFor="diameter">diameter: </label>
 			<input type="number" step="0.1" name="diameter" />
+
+			<Link to="/order_ready">
+				<button>Continue</button>
+			</Link>
 		</div>
 	);
 };
