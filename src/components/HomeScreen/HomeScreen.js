@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import classes from './HomeScreen.module.css';
 
 const MainScreen = () => {
+	let history = useHistory();
+
+	const handleClick = () => {
+		history.push('/create_order');
+	};
+
 	return (
-		<>
-			<h1>Please place your order!</h1>
-			<Link to="/create_order">
-				<button>Continue</button>
-			</Link>
-		</>
+		<div className="order_window">
+			<h1 className={classes.header}>Please place your order!</h1>
+			<button onClick={handleClick}>Continue</button>
+		</div>
 	);
 };
 
