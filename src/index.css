@@ -41,13 +41,13 @@
 	padding: 10px;
 	margin: 7px 0 20px 0;
 	border: 3px solid var(--primarycolorlight);
+	background-color: #fff;
 	color: var(--primarycolor);
 	transition: border 0.5s;
 }
 
 .order_window button {
 	margin: 10px 0 0;
-	background-color: #fff;
 	border-radius: 30px;
 	font-weight: 500;
 	font-size: 16px;
