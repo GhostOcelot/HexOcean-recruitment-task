@@ -17,4 +17,4 @@ Please follow the below steps in order to run the application on your local comp
 
 ### node version:
 
-v14.16.0
+14.16.0

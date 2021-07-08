@@ -40,8 +40,18 @@
 	width: 100%;
 	padding: 10px;
 	margin: 7px 0 20px 0;
-	border: 3px solid var(--primarycolor);
+	border: 3px solid var(--primarycolorlight);
 	color: var(--primarycolor);
+}
+
+.order_window input:hover,
+.order_window select:hover,
+.order_window button:hover,
+.order_window input:focus,
+.order_window select:focus,
+.order_window button:focus {
+	border: 3px solid var(--primarycolor);
+	outline: none;
 }
 
 input[type='range'] {
@@ -68,7 +78,7 @@ input[type='range']::-webkit-slider-thumb {
 	padding: 10px;
 	margin: 10px 0 0;
 	background-color: #fff;
-	border: 3px solid var(--primarycolor);
+	border: 3px solid var(--primarycolorlight);
 	border-radius: 30px;
 	color: var(--primarycolor);
 	font-weight: 500;
