@@ -1,6 +1,6 @@
 # Food order form
 
-Simple app
+Simple app simulating an online food order including parsing data from user input, form validation, sending request, programattic routing and some nice CSS for pleasant user interaction.
 
 ## Instruction
 

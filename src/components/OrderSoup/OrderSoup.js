@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { OrderContext } from '../../context/OrderContext';
 import classes from './OrderSoup.module.css';
 
@@ -7,6 +7,10 @@ const OrderSoup = () => {
 	const [spiciness, setSpiciness] = useState(4);
 	const [orderDetails, setOrderDetails] = useContext(OrderContext);
 	let history = useHistory();
+
+	useEffect(() => {
+		setOrderDetails({ ...orderDetails, spiciness_scale: spiciness });
+	}, []);
 
 	const changeOrderDetails = e => {
 		setOrderDetails({ ...orderDetails, [e.target.name]: Number(e.target.value) });
@@ -25,7 +29,7 @@ const OrderSoup = () => {
 				.then(res => res.json())
 				.then(data => {
 					console.log(data);
-					setOrderDetails({});
+					setOrderDetails({ name: '', preparation_time: '', type: '' });
 					history.push('/order_ready');
 				})
 				.catch(err => console.log(err));

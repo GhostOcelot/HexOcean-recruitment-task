@@ -1,8 +1,9 @@
 import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { OrderContext } from '../../context/OrderContext';
 
 const OrderSandwich = () => {
+	const [showWarning, setShowWarning] = useState(false);
 	const [orderDetails, setOrderDetails] = useContext(OrderContext);
 	let history = useHistory();
 
@@ -22,10 +23,13 @@ const OrderSandwich = () => {
 				.then(res => res.json())
 				.then(data => {
 					console.log(data);
-					setOrderDetails({});
+					setOrderDetails({ name: '', preparation_time: '', type: '' });
+					setShowWarning(false);
 					history.push('/order_ready');
 				})
 				.catch(err => console.log(err));
+		} else {
+			setShowWarning(true);
 		}
 	};
 
@@ -39,6 +43,7 @@ const OrderSandwich = () => {
 			</div>
 
 			<button onClick={orderSandwich}>Continue</button>
+			<p className={showWarning ? 'warning' : 'warning hide'}>PLEASE SELECT THE NUMBER OF SLICES</p>
 		</div>
 	);
 };

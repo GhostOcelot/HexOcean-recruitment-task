@@ -1,8 +1,9 @@
 import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { OrderContext } from '../../context/OrderContext';
 
 const CreateOrder = () => {
+	const [showWarning, setShowWarning] = useState(false);
 	const [orderDetails, setOrderDetails] = useContext(OrderContext);
 	let history = useHistory();
 
@@ -13,7 +14,16 @@ const CreateOrder = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		if (orderDetails.name && orderDetails.preparation_time && orderDetails.type) {
+			if (orderDetails.preparation_time.length === 5) {
+				setOrderDetails({
+					...orderDetails,
+					preparation_time: `${orderDetails.preparation_time}:00`,
+				});
+			}
+			setShowWarning(false);
 			history.push(`/order_${orderDetails.type}`);
+		} else {
+			setShowWarning(true);
 		}
 	};
 
@@ -24,7 +34,12 @@ const CreateOrder = () => {
 					<label htmlFor="name">dish name:</label>
 				</div>
 				<div>
-					<input type="text" name="name" onChange={e => changeOrderDetails(e)} />
+					<input
+						type="text"
+						name="name"
+						value={orderDetails.name}
+						onChange={e => changeOrderDetails(e)}
+					/>
 				</div>
 
 				<div>
@@ -35,6 +50,7 @@ const CreateOrder = () => {
 						type="time"
 						step="1"
 						name="preparation_time"
+						value={orderDetails.preparation_time}
 						onChange={e => changeOrderDetails(e)}
 					/>
 				</div>
@@ -43,7 +59,7 @@ const CreateOrder = () => {
 					<label htmlFor="type">dish type:</label>
 				</div>
 				<div>
-					<select onChange={e => changeOrderDetails(e)} name="type">
+					<select value={orderDetails.type} onChange={e => changeOrderDetails(e)} name="type">
 						<option value=""></option>
 						<option value="pizza">pizza</option>
 						<option value="soup">soup</option>
@@ -51,6 +67,7 @@ const CreateOrder = () => {
 					</select>
 				</div>
 				<button>Continue</button>
+				<p className={showWarning ? 'warning' : 'warning hide'}>PLEASE FILL ALL THE FIELDS</p>
 			</form>
 		</div>
 	);
